@@ -1,0 +1,6 @@
+data/
+model/
+.venv/
+CSV Files/
+log/
+fig/
