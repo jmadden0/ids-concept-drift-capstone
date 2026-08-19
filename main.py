@@ -163,6 +163,12 @@ def ct_stage(args, logger, train_ds, te_dataset):
     logger.info('Finish Constrained Tuning Stage')
     logger.info(f'Result at Epoch: [{epoch}], acc={test_score[0]:.6f}, recall={test_score[1]:.6f}, precision={test_score[2]:.6f}, f1={test_score[3]:.6f}')
 
+    #Save the tuned encoder and the classifier for experiments
+    model_path = os.path.join(args.root_path, "model", "tuned_encoder.pth")
+    torch.save(model.state_dict(), model_path)    
+    classifier_path = os.path.join(args.root_path, "model", "classifier.pth")
+    torch.save(classifier.state_dict(), classifier_path)
+
     return test_score
 
 def argument_parser():
